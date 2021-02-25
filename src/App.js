@@ -1,10 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 import Post from "./Post";
 
-const tijd = "00.25.27";
+const tijd = "00.57.42";
 
 function App() {
+  const [posts, setPosts] = useState([
+    {
+      username: "sjoerdvink",
+      caption: "my first post",
+      imageUrl: "https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg",
+    },
+    {
+      username: "sjoerdvink",
+      caption: "my first post",
+      imageUrl: "https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg",
+    },
+  ]);
+
   return (
     <div className='app'>
       <div className='app__header'>
@@ -14,7 +27,13 @@ function App() {
           alt=''
         />
       </div>
-      <Post />
+      {posts.map((post) => (
+        <Post
+          username={post.username}
+          caption={post.caption}
+          imageUrl={post.imageUrl}
+        />
+      ))}
     </div>
   );
 }
